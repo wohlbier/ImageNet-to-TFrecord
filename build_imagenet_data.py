@@ -177,10 +177,13 @@ def _convert_to_example(filename, image_buffer, label, synset, human,
       'image/colorspace': _bytes_feature(colorspace),
       'image/channels': _int64_feature(channels),
       'image/class/label': _int64_feature(label),
-      'image/class/synset': _bytes_feature(bytes(synset,'utf-8')),
-      'image/class/text': _bytes_feature(bytes(human,'utf-8')),
+      #'image/class/synset': _bytes_feature(bytes(synset,'utf-8')),
+      'image/class/synset': _bytes_feature(bytes(synset)),
+      #'image/class/text': _bytes_feature(bytes(human,'utf-8')),
+      'image/class/text': _bytes_feature(bytes(human)),
       'image/format': _bytes_feature(image_format),
-      'image/filename': _bytes_feature(bytes(os.path.basename(filename),'utf-8')),
+      #'image/filename': _bytes_feature(bytes(os.path.basename(filename),'utf-8')),
+      'image/filename': _bytes_feature(bytes(os.path.basename(filename))),
       'image/encoded': _bytes_feature(image_buffer)}))
   return example
 
